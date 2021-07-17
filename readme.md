@@ -239,7 +239,7 @@ starts the giveaway again after restart, put this in ready event to start All th
  content: content, can be a string or a Discord Embed
 
  # __dropdown roles__
-
+  ### [click here for fully functional dropdown-roles bot](https://github.com/Nuggies-bot/dropdown-roles-example)
 <img src="https://cdn.discordapp.com/attachments/801132115755270164/860549628075835413/v3gHFgjz.gif">
 
  constructor. use .setrole() on it to create dropdown options
