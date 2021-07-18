@@ -66,14 +66,15 @@ class main {
 			if (fetchMem) member = button.guild.members.cache.get(button.clicker.member.id);
 			await member.fetch(true);
 			const role = id.split(':')[1];
-			if (button.clicker.member.roles.cache.has(role)) {
-				if(!role.editable) return button.reply.send(`Please Contact your Staff! (This role is higher than my or i can't find this role!)`, true);
-				button.clicker.member.roles.remove(role);
-				button.reply.send(`I have removed the <@&${role}> role from you!`, true);
+			const realrole =  button.guild.roles.cache.get(role)
+			if (button.clicker.member.roles.cache.has(realrole)) {
+				if(!realrole.editable) return button.reply.send(`Please Contact your Staff! (This role is higher than my or i can't find this role!)`, true);
+					button.clicker.member.roles.remove(realrole);
+					button.reply.send(`I have removed the <@&${role}> role from you!`, true);
 			}
 			else {
-				if(!role.editable) return button.reply.send(`Please Contact your Staff! (This role is higher than my or i can't find this role!)`, true);
-				button.clicker.member.roles.add(role);
+				if(!realrole.editable) return button.reply.send(`Please Contact your Staff! (This role is higher than my or i can't find this role!)`, true);
+				button.clicker.member.roles.add(realrole);
 				button.reply.send(`I have added the <@&${role}> role to you!`, true);
 			}
 		}
@@ -88,15 +89,16 @@ class main {
 			if (fetchMem) member = menu.guild.members.cache.get(menu.clicker.member.id);
 			await member.fetch(true);
 			const role = menu.values[0];
-			if (menu.clicker.member.roles.cache.has(role)) {
-				if(!role.editable) return menu.reply.send(`Please Contact your Staff! (This role is higher than my or i can't find this role!)`, true);
-				menu.clicker.member.roles.remove(role);
+			const realrole =  menu.guild.roles.cache.get(role)
+			if (menu.clicker.member.roles.cache.has(realrole)) {
+				if(!realrole.editable) return menu.reply.send(`Please Contact your Staff! (This role is higher than my or i can't find this role!)`, true);
+				menu.clicker.member.roles.remove(realrole);
 				menu.reply.send(`I have removed the <@&${role}> role from you!`, true);
 			}
 			else {
-				if(!role.editable) return menu.reply.send(`Please Contact your Staff! (This role is higher than my or i can't find this role!)`, true);
-				menu.clicker.member.roles.add(role);
-				menu.reply.send(`I have added the <@&${role}> role to you!`, true);
+			if(!realrole.editable) return menu.reply.send(`Please Contact your Staff! (This role is higher than my or i can't find this role!)`, true);
+			menu.clicker.member.roles.add(realrole);
+			menu.reply.send(`I have added the <@&${role}> role to you!`, true);
 			}
 		}
 	}
