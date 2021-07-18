@@ -67,14 +67,14 @@ class main {
 			await member.fetch(true);
 			const role = id.split(':')[1];
 			const realrole =  button.guild.roles.cache.get(role)
-			if (button.clicker.member.roles.cache.has(realrole)) {
+			if (button.clicker.member.roles.cache.has(role)) {
 				if(!realrole.editable) return button.reply.send(`Please Contact your Staff! (This role is higher than my or i can't find this role!)`, true);
 					button.clicker.member.roles.remove(realrole);
 					button.reply.send(`I have removed the <@&${role}> role from you!`, true);
 			}
 			else {
 				if(!realrole.editable) return button.reply.send(`Please Contact your Staff! (This role is higher than my or i can't find this role!)`, true);
-				button.clicker.member.roles.add(realrole);
+				button.clicker.member.roles.add(role);
 				button.reply.send(`I have added the <@&${role}> role to you!`, true);
 			}
 		}
@@ -90,14 +90,14 @@ class main {
 			await member.fetch(true);
 			const role = menu.values[0];
 			const realrole =  menu.guild.roles.cache.get(role)
-			if (menu.clicker.member.roles.cache.has(realrole)) {
+			if (menu.clicker.member.roles.cache.has(role)) {
 				if(!realrole.editable) return menu.reply.send(`Please Contact your Staff! (This role is higher than my or i can't find this role!)`, true);
-				menu.clicker.member.roles.remove(realrole);
+				menu.clicker.member.roles.remove(role);
 				menu.reply.send(`I have removed the <@&${role}> role from you!`, true);
 			}
 			else {
 			if(!realrole.editable) return menu.reply.send(`Please Contact your Staff! (This role is higher than my or i can't find this role!)`, true);
-			menu.clicker.member.roles.add(realrole);
+			menu.clicker.member.roles.add(role);
 			menu.reply.send(`I have added the <@&${role}> role to you!`, true);
 			}
 		}
