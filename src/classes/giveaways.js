@@ -185,7 +185,7 @@ class giveaways {
 		const filter = (button) => button.clicker.user.id === message.author.id;
 		const collector = await m.createButtonCollector(filter, { time: 90000, max: 1 });
 		collector.on('collect', async (b) => {
-			b.defer();
+			b.reply.defer();
 			ended = true;
 			b.channel.send(`<@${b.clicker.user.id}> won the drop congratulations!!`);
 			await utils.editDropButtons(m.client, b);
