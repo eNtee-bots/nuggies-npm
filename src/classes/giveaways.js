@@ -67,7 +67,7 @@ class giveaways {
 				data.ended = true;
 				data.save();
 				const embed = msg.embeds[0];
-				embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n👑 Winner(s): none\n⏲️Ends: <t:${Math.round((new Date()).getTime() / 1000)}:R> <t:${Math.round((new Date()).getTime() / 1000)}:f>`;
+				embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n👑 Winner(s): none\n⏲️Ended: <t:${Math.round((new Date()).getTime() / 1000)}:R> <t:${Math.round((new Date()).getTime() / 1000)}:f>`;
 				msg.edit('', { embed: embed });
 				utils.editButtons(message.client, data);
 				return 'NO_WINNERS';
@@ -83,7 +83,7 @@ class giveaways {
 				message.guild.members.cache.get(user).send(dmEmbed);
 			});
 			const embed = msg.embeds[0];
-			embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n👑 Winner(s): ${winners.map(winner => `<@${winner}>`).join(', ')}\n⏲️Ends: <t:${Math.round((new Date()).getTime() / 1000)}:R> <t:${Math.round((new Date()).getTime() / 1000)}:f>`;
+			embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n👑 Winner(s): ${winners.map(winner => `<@${winner}>`).join(', ')}\n⏲️Ended: <t:${Math.round((new Date()).getTime() / 1000)}:R> <t:${Math.round((new Date()).getTime() / 1000)}:f>`;
 			msg.edit('', { embed: embed });
 			data.ended = true;
 			data.save();
@@ -118,7 +118,7 @@ class giveaways {
 			data.ended = true;
 			data.save();
 			const embed = giveawaymsg.embeds[0];
-			embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n👑 Winner(s): none\n`;
+			embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n👑 Winner(s): none\n⏲️Ended: <t:${Math.round((new Date()).getTime() / 1000)}:R> <t:${Math.round((new Date()).getTime() / 1000)}:f>`;
 			giveawaymsg.edit('', { embed: embed });
 			utils.editButtons(message.client, data);
 			return 'NO_WINNERS';
@@ -134,7 +134,7 @@ class giveaways {
 			message.guild.members.cache.get(user).send(dmEmbed);
 		});
 		const embed = giveawaymsg.embeds[0];
-		embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n👑 Winner(s): ${winners.map(winner => `<@${winner}>`).join(', ')}\n⏲️Ends: <t:${Math.round((new Date()).getTime() / 1000)}:R> <t:${Math.round((new Date()).getTime() / 1000)}:f>`;
+		embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n👑 Winner(s): ${winners.map(winner => `<@${winner}>`).join(', ')}\n⏲️Ended: <t:${Math.round((new Date()).getTime() / 1000)}:R> <t:${Math.round((new Date()).getTime() / 1000)}:f>`;
 		giveawaymsg.edit('', { embed: embed });
 		data.ended = true;
 		data.save();
