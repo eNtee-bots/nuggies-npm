@@ -67,7 +67,7 @@ class giveaways {
 				data.ended = true;
 				data.save();
 				const embed = msg.embeds[0];
-				embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n⏲️ Winner(s): none`;
+				embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n👑 Winner(s): none\n⏲️Ends: <t:${Math.round((new Date()).getTime() / 1000)}:R> <t:${Math.round((new Date()).getTime() / 1000)}:f>`;
 				msg.edit('', { embed: embed });
 				utils.editButtons(message.client, data);
 				return 'NO_WINNERS';
@@ -76,14 +76,14 @@ class giveaways {
 			message.channel.send(`${winners.map(winner => `<@${winner}>`).join(', ')} you won ${data.prize} Congratulations! Hosted by ${message.guild.members.cache.get(data.host).toString()}`, { component: await this.gotoGiveaway(data) });
 			const dmEmbed = new Discord.MessageEmbed()
 				.setTitle('You won!')
-				.setDescription(`You have won a giveaway in **${msg.guild.name}**!\nPrize: [${data.prize}](https://discord.com/${msg.guild.id}/${msg.channel.id}/${data.messageID})`)
-				.setColor('RANDOM')
+				.setDescription(`You have won a giveaway in **${msg.guild.name}**!\nPrize: [${data.prize}](https://discord.com/channels/${msg.guild.id}/${msg.channel.id}/${data.messageID})`)
+				.setColor(message.guild.me.displayHexColor)
 				.setFooter('GG!');
 			winners.forEach((user) => {
 				message.guild.members.cache.get(user).send(dmEmbed);
 			});
 			const embed = msg.embeds[0];
-			embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n⏲️ Winner(s): ${winners.map(winner => `<@${winner}>`).join(', ')}`;
+			embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n👑 Winner(s): ${winners.map(winner => `<@${winner}>`).join(', ')}\n⏲️Ends: <t:${Math.round((new Date()).getTime() / 1000)}:R> <t:${Math.round((new Date()).getTime() / 1000)}:f>`;
 			msg.edit('', { embed: embed });
 			data.ended = true;
 			data.save();
@@ -118,7 +118,7 @@ class giveaways {
 			data.ended = true;
 			data.save();
 			const embed = giveawaymsg.embeds[0];
-			embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n⏲️ Winner(s): none`;
+			embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n👑 Winner(s): none\n`;
 			giveawaymsg.edit('', { embed: embed });
 			utils.editButtons(message.client, data);
 			return 'NO_WINNERS';
@@ -127,14 +127,14 @@ class giveaways {
 		message.channel.send(`${winners.map(winner => `<@${winner}>`).join(', ')} you won ${data.prize} Congratulations! Hosted by ${message.guild.members.cache.get(data.host).toString()}`, { component: await this.gotoGiveaway(data) });
 		const dmEmbed = new Discord.MessageEmbed()
 			.setTitle('You won!')
-			.setDescription(`You have won a giveaway in **${giveawaymsg.guild.name}**!\nPrize: [${data.prize}](https://discord.com/${giveawaymsg.guild.id}/${giveawaymsg.channel.id}/${data.messageID})`)
-			.setColor('RANDOM')
+			.setDescription(`You have won a giveaway in **${giveawaymsg.guild.name}**!\nPrize: [${data.prize}](https://discord.com/channels/${giveawaymsg.guild.id}/${giveawaymsg.channel.id}/${data.messageID})`)
+			.setColor(message.guild.me.displayHexColor)
 			.setFooter('GG!');
 		winners.forEach((user) => {
 			message.guild.members.cache.get(user).send(dmEmbed);
 		});
 		const embed = giveawaymsg.embeds[0];
-		embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n⏲️ Winner(s): ${winners.map(winner => `<@${winner}>`).join(', ')}`;
+		embed.description = `🎁 Prize: **${data.prize}**\n🎊 Hosted by: <@${data.host.toString()}>\n👑 Winner(s): ${winners.map(winner => `<@${winner}>`).join(', ')}\n⏲️Ends: <t:${Math.round((new Date()).getTime() / 1000)}:R> <t:${Math.round((new Date()).getTime() / 1000)}:f>`;
 		giveawaymsg.edit('', { embed: embed });
 		data.ended = true;
 		data.save();
@@ -149,8 +149,8 @@ class giveaways {
 		if (!chosen) return [];
 		const dmEmbed = new Discord.MessageEmbed()
 			.setTitle('You won!')
-			.setDescription(`You have won a giveaway in **${msg.guild.name}**!\nPrize: [${data.prize}](https://discord.com/${msg.guild.id}/${msg.channel.id}/${messageID})`)
-			.setColor('RANDOM')
+			.setDescription(`You have won a giveaway in **${msg.guild.name}**!\nPrize: [${data.prize}](https://discord.com/channels/${msg.guild.id}/${msg.channel.id}/${messageID})`)
+			.setColor(message.guild.me.displayHexColor)
 			.setFooter('GG!');
 		chosen.forEach((user) => {
 			client.users.cache.get(user).send(dmEmbed);
