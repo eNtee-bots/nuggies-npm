@@ -80,10 +80,8 @@ module.exports.giveawayEmbed = async (client, { host, prize, endAfter, winners, 
 	const hoster = client.users.cache.get(host) || await client.users.fetch(host).catch();
 	const embed = new Discord.MessageEmbed()
 		.setTitle('Giveaway! 🎉')
-		.setDescription(`**Click the enter button to enter the giveaway!**\n🎁 Prize: **${prize}**\n🎊 Hosted by: ${hoster}\n⏲️ Winner(s): \`${winners}\`\n\nRequirements: ${requirements.enabled ? requirements.roles.map(x => `<@&${x}>`).join(', ') : 'None!'}`)
-		.setColor('RANDOM')
-		.setFooter('Ends', 'https://cdn.discordapp.com/emojis/843076397345144863.png?v=1')
-		.setTimestamp(Date.now() + ms(endAfter));
+		.setDescription(`**Click the enter button to enter the giveaway!**\n🎁 Prize: **${prize}**\n🎊 Hosted by: ${hoster}\n👑 Winner(s): \`${winners}\`\n⏲️Ends: <t:${Math.round((new Date()).getTime() / 1000) + ms(endAfter / 1000)}:R>  <t:${Math.round((new Date()).getTime() / 1000) + ms(endAfter / 1000)}:f>\n\nRequirements: ${requirements.enabled ? requirements.roles.map(x => `<@&${x}>`).join(', ') : 'None!'}`)
+		.setColor('#2F3136')
 	return embed;
 };
 module.exports.dropEmbed = async (client, { prize, host }) => {
@@ -91,7 +89,7 @@ module.exports.dropEmbed = async (client, { prize, host }) => {
 	const embed = new Discord.MessageEmbed()
 		.setTitle('Giveaway drop! 🎉')
 		.setDescription(`**first to click the button wins!**\n🎁 Prize: **${prize}**\n🎊 Hosted by: ${hoster}\n`)
-		.setColor('RANDOM')
+		.setColor('#2F3136')
 		.setFooter('winner: none');
 	return embed;
 };
